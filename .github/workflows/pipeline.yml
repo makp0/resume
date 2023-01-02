@@ -21,12 +21,10 @@ jobs:
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
-        run: echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1 >> hash.txt
+        run: echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1 >> $GITHUB_OUTPUT
         id: checksum
-      - name: Output hash
-        run: echo "hash is $(cat hash.txt)"
       - name: Generate checksum
-        run: echo "${{ toJson(steps.checksum) }}"
+        run: echo "result is ${{ toJson(steps.checksum) }}"
         
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
