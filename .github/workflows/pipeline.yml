@@ -29,11 +29,11 @@ jobs:
         with:
           path: ${{ steps.checksum.output }}
           key: json-checksum
-
-      # Step 4: If the checksum is not in the cache, continue executing the next jobs in the pipeline
+      
+      # Step 4: If the checksum is in the cache, exit the pipeline
       - name: Continue executing pipeline
-        if: steps.cache.output == 'cache-miss'
-        continue-on-error: true
+        if: steps.cache.output == 'cache-hit'
+        run: exit
 
   # TESTS BEGIN
   python_tests:
