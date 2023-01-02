@@ -13,7 +13,8 @@ jobs:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
         run: |
-          curl -X GET "${{ secrets.RESUME_JSON_URL }}"
+          curl -X GET "${{ secrets.RESUME_JSON_URL }}" > response.json
+          echo "::set-output name=body::$(cat response.json)"
         id: json
 
       - name: Generate checksum
