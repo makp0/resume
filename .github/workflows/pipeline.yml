@@ -14,7 +14,7 @@ jobs:
       - name: Retrieve JSON file
         uses: wei/curl@master
         with:
-          args: ${{ secrets.RESUME_JSON_URL }}
+          args: secrets.RESUME_JSON_URL
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
         
