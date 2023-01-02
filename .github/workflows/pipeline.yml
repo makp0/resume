@@ -4,10 +4,10 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron: '* * * * *' # Run every minute
+    - cron: '5 * * * *' # Run every 5 minutes
 
 jobs:
-  poll-for-changes:
+  load-input:
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
@@ -35,11 +35,12 @@ jobs:
       # Step 4: If the checksum is in the cache, exit the pipeline
       - name: Exit pipeline if no updates
         if: steps.cache.outputs.cache-hit == 'true'
-        run: exit
+        run: exit 1
 
   # TESTS BEGIN
   python_tests:
     name: Run Python unit tests
+    needs: load-input
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -58,6 +59,7 @@ jobs:
 
   verify_spelling:
     name: Check spelling
+    needs: load-input
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -78,6 +80,7 @@ jobs:
 
   validate_schema:
     name: Validate JSON resume schema
+    needs: load-input
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -92,6 +95,7 @@ jobs:
 
   verify_urls:
     name: Verify URLs in resume
+    needs: load-input
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
