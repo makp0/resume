@@ -15,7 +15,6 @@ jobs:
         run: |
           curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
         id: json
-        
 
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
@@ -34,8 +33,8 @@ jobs:
           key: json-checksum
       
       # Step 4: If the checksum is in the cache, exit the pipeline
-      - name: Continue executing pipeline
-        if: steps.cache.output == 'cache-hit'
+      - name: Exit pipeline if no updates
+        if: steps.cache.outputs.cache-hit == 'true'
         run: exit
 
   # TESTS BEGIN
