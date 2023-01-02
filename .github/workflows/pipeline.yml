@@ -22,7 +22,7 @@ jobs:
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
-        run: echo "::set-output name=body::$(echo "${{ steps.json.outputs.body }}" | sha256sum | cut -d' ' -f1)"
+        run: echo "::set-output name=output::$(echo "${{ steps.json.outputs.body }}" | sha256sum | cut -d' ' -f1)"
         id: checksum
         
       - name: Generate checksum
