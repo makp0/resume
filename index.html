@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>John Mikael Gundersen</title>
+      <meta name="description" content="Tech lead with a foucs on quality and best practices. Has worked within a variety of domains, such as highly sensitive healthcare applications and large-scale banking systems.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap">
+    <style>:root {
+  color-scheme: light dark;
+
+  --color-background: #ffffff; /* White */
+  --color-muted: #f3f4f5; /* Light Gray 200 */
+  --color-primary: #191e23; /* Dark Gray 900 */
+  --color-secondary: #6c7781; /* Dark Gray 300 */
+  --color-accent: #ffb900; /* Accent Yellow */
+  --color-link: #46b450; /* Accent Green */
+
+  --scale-ratio: 1.25;
+  --scale0: 1rem;
+  --scale1: calc(var(--scale0) * var(--scale-ratio));
+  --scale2: calc(var(--scale1) * var(--scale-ratio));
+  --scale3: calc(var(--scale2) * var(--scale-ratio));
+  --scale4: calc(var(--scale3) * var(--scale-ratio));
+  --scale5: calc(var(--scale4) * var(--scale-ratio));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #191e23; /* Dark Gray 900 */
+    --color-muted: #23282d; /* Dark Gray 800 */
+    --color-primary: #fbfbfc; /* Light Gray 100 */
+    --color-secondary: #ccd0d4; /* Light Gray 700 */
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-primary);
+  display: grid;
+  font: 1em/1.5 Lato, sans-serif;
+  gap: 2em;
+  grid-template-columns:
+    [full-start]
+    1fr
+    [main-start side-start]
+    minmax(min-content, 12em)
+    [side-end content-start]
+    minmax(min-content, 36em)
+    [main-end content-end]
+    1fr
+    [full-end];
+  grid-template-rows: auto [content] 0;
+  margin-bottom: 4em;
+}
+
+body::before {
+  content: '';
+  grid-column: full;
+  grid-row: content;
+}
+
+ol,
+ul {
+  padding-left: 1em;
+}
+
+:not(.icon-list, .tag-list) > li + li {
+  margin-top: 0.4em;
+}
+
+li::marker,
+.network {
+  color: var(--color-secondary);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:focus,
+a:hover {
+  color: var(--color-accent);
+}
+
+h1,
+h2,
+h3,
+h5 {
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--scale5);
+}
+
+h2 {
+  color: var(--color-secondary);
+  font-size: var(--scale4);
+}
+
+h3 {
+  color: var(--color-accent);
+  font-size: var(--scale3);
+  grid-column: side;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: var(--scale2);
+}
+
+h5 {
+  font-size: var(--scale1);
+}
+
+h6 {
+  font-size: var(--scale0);
+}
+
+blockquote {
+  border-left: 0.2em solid var(--color-muted);
+  padding-left: 1em;
+}
+
+cite {
+  color: var(--color-secondary);
+  font-style: inherit;
+}
+
+cite::before {
+  content: '— ';
+}
+
+svg {
+  margin-right: 0.2em;
+  vertical-align: -0.2em;
+}
+
+.masthead {
+  background: var(--color-muted);
+  display: inherit;
+  gap: inherit;
+  grid-column: full;
+  grid-template-columns: inherit;
+  padding: 4em 0;
+  text-align: center;
+}
+
+.masthead > *,
+section {
+  grid-column: main;
+}
+
+.masthead > img {
+  border-radius: 50%;
+  margin: 0 auto;
+  max-width: 12em;
+}
+
+article > * + *,
+blockquote > * + * {
+  margin-top: 0.6em;
+}
+
+.meta {
+  color: var(--color-secondary);
+}
+
+.stack {
+  display: grid;
+  gap: 1.5em;
+}
+
+.icon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 1em;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.grid-list {
+  display: grid;
+  gap: 1em;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  list-style: none;
+  padding: 0;
+}
+
+.tag-list > li {
+  background: var(--color-muted);
+  border-radius: 0.2em;
+  padding: 0.2em 0.6em;
+}
+
+.bullet-item:not(:first-child)::before {
+  content: '· ';
+  margin: 0 0.2em;
+}
+
+@media print, (min-width: 48em) {
+  h3 {
+    text-align: right;
+    margin-bottom: inherit;
+  }
+
+  .masthead {
+    text-align: inherit;
+  }
+
+  .masthead > *,
+  section {
+    grid-column: content;
+  }
+
+  .masthead img {
+    grid-column: side;
+    grid-row: span 2;
+    max-width: 100%;
+  }
+
+  section {
+    display: contents;
+  }
+
+  .icon-list {
+    flex-direction: column;
+  }
+
+  .grid-list {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(calc((100% - 1em) / 2), 1fr)
+    );
+  }
+}
+</style>
+  </head>
+  <body>
+      <header class="masthead">
+          <img src="" alt="">
+        <div>
+            <h1>John Mikael Gundersen</h1>
+            <h2>Tech lead | Developer</h2>
+        </div>
+          <article>
+            <p>Tech lead with a foucs on quality and best practices. Has worked within a variety of domains, such as highly sensitive healthcare applications and large-scale banking systems.</p>
+          </article>
+        <ul class="icon-list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Oslo, NO
+              </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <a href="mailto:john@jmgundersen.com">john@jmgundersen.com</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              <a href="https://jmgundersen.com">jmgundersen.com</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <a href="https://github.com/atomfinger/">atomfinger</a>
+                <span class="network">(GitHub)</span>
+            </li>
+        </ul>
+      </header>
+
+      <section id="work">
+        <h3>Work</h3>
+        <div class="stack">
+            <article>
+              <header>
+                <h4>Tech Lead</h4>
+                <div class="meta">
+                  <div>
+                    <strong><a href="https://protectorforsikring.no/">Protector</a></strong>
+                  </div>
+                  <div>
+                    <time datetime="2020-12-01">Dec 2020</time> –
+                    Present
+                  </div>
+                    <div>Oslo, Norway</div>
+                </div>
+              </header>
+                <p>Currently helping the company by improving development processes</p>
+                <ul>
+                    <li><p>Built the initialiser which serves as the golden standard within the organisation while also being the fundation of any new application</p></li>
+                    <li><p>Created the system that allows for efficient risk analysis for our reinsurance which can potentially save the business millions in years to come</p></li>
+                    <li><p>Headed a project which aimed at geolocating risks in the UK where we ended up geolocating +90% of the UK portfolio</p></li>
+                    <li><p>Headed the adoption of various technologies and practices: OpenAPI, Unit, system and integration testing, Static analysis tools such as SonarCloud, Created the post-mortem process</p></li>
+                    <li><p>Authored developer guidelines. Created the first pipeline implementation for GitHub workflow</p></li>
+                    <li><p>Been part of most major technology decisions taken since I started</p></li>
+                </ul>
+            </article>
+            <article>
+              <header>
+                <h4>Senior Consultant</h4>
+                <div class="meta">
+                  <div>
+                    <strong><a href="https://www.tietoevry.com/">TietoEvry</a></strong>
+                  </div>
+                  <div>
+                    <time datetime="2018-05-01">May 2018</time> –
+                    <time datetime="2020-11-30">Nov 2020</time>
+                  </div>
+                    <div>Oslo, Norway</div>
+                </div>
+              </header>
+                <p>Maintained and created core solutions for major nordic banks.</p>
+                <ul>
+                    <li><p>Made and maintained core web systems for multiple banks</p></li>
+                    <li><p>Created new systems for integration testing and improved CI/CD pipelines</p></li>
+                    <li><p>Authored developer guidelines for a cleaner and more maintainable codebase</p></li>
+                    <li><p>Was a team lead managing the team responsible for our PCI compliant systems</p></li>
+                    <li><p>Was a project architect that guided new banks, while being responsible for the technical aspect of the project</p></li>
+                    <li><p>Worked closely with partners in India</p></li>
+                </ul>
+            </article>
+            <article>
+              <header>
+                <h4>Senior system developer</h4>
+                <div class="meta">
+                  <div>
+                    <strong><a href="https://www.aspit.no/">Aspit</a></strong>
+                  </div>
+                  <div>
+                    <time datetime="2013-09-01">Sep 2013</time> –
+                    <time datetime="2018-05-01">May 2018</time>
+                  </div>
+                    <div>Seljord, Norway</div>
+                </div>
+              </header>
+                <p>Made electronic health record systems for the privatized healthcare sector in Norway. Started as a system developer for the first 3 years, eventually got promoted to the position of a team lead.</p>
+                <ul>
+                    <li><p>Was responsible for the development of the core product</p></li>
+                    <li><p>Worked closely with the business by planning and implementing new features</p></li>
+                    <li><p>Worked closely with an outsourcing team in Vietnam</p></li>
+                </ul>
+            </article>
+        </div>
+      </section>
+      <section id="education">
+        <h3>Education</h3>
+        <div class="stack">
+            <article>
+              <header>
+                <h4><a href="https://www.aber.ac.uk/en/">Aberystwyth University</a></h4>
+                <div class="meta">
+                    <strong>Computer Science</strong>
+                  <div>
+                    <time datetime="2010-08-01">Aug 2010</time> –
+                    <time datetime="2014-05-01">May 2014</time>
+                  </div>
+                </div>
+              </header>
+                <p>Bachelor of science</p>
+                <h5>Courses</h5>
+                <ul>
+                    <li><p>CS38010 - Space Robotics</p></li>
+                    <li><p>CS36410 - Intelligent Robotics</p></li>
+                    <li><p>CS38110 - Open Source Development Issues</p></li>
+                    <li><p>CS31310 - Agile Methodologies</p></li>
+                </ul>
+            </article>
+        </div>
+      </section>
+      <section id="projects">
+        <h3>Projects</h3>
+        <div class="stack">
+            <article>
+              <header>
+                <h4><a href="https://github.com/atomfinger/toUUID">toUUID</a></h4>
+                <div class="meta">
+                  <div>
+                  </div>
+                  <div>
+                    <time datetime="2020-10-09">Oct 2020</time> –
+                    Present
+                  </div>
+                </div>
+              </header>
+                <p>A small library that creates human-readable and deterministic UUIDs for testing purposes.</p>
+            </article>
+            <article>
+              <header>
+                <h4><a href="https://github.com/atomfinger/resume">This resume</a></h4>
+                <div class="meta">
+                  <div>
+                  </div>
+                  <div>
+                    <time datetime="2020-08-31">Aug 2020</time> –
+                    Present
+                  </div>
+                </div>
+              </header>
+                <p>This resume is more than just a resume. It is fully automated using Github Actions and scripted with Python. It has automated tests. It converts between a bunch of different formats and it auto-deploys to a production-like environment.</p>
+            </article>
+        </div>
+      </section>
+      <section id="skills">
+        <h3>Skills</h3>
+        <div class="grid-list">
+            <div>
+                <h4>Developer</h4>
+                <ul class="tag-list">
+                    <li>Java/Kotlin</li>
+                    <li>C# .NET</li>
+                    <li>Python</li>
+                    <li>Elixir</li>
+                    <li>SQL of various kinds</li>
+                    <li>Microservices</li>
+                    <li>Kafka</li>
+                    <li>Architecture</li>
+                    <li>Contract first</li>
+                    <li>gRPC</li>
+                </ul>
+            </div>
+            <div>
+                <h4>DevOps</h4>
+                <ul class="tag-list">
+                    <li>TeamCity</li>
+                    <li>Jenkins</li>
+                    <li>GitHub Actions</li>
+                    <li>Groovy</li>
+                    <li>Docker</li>
+                    <li>K8s</li>
+                    <li>Swarm</li>
+                    <li>Solution design</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Testing</h4>
+                <ul class="tag-list">
+                    <li>Testcontainers</li>
+                    <li>System tests</li>
+                    <li>Mockserver</li>
+                    <li>Contract testing</li>
+                    <li>Narrow &amp; Wide integration tests</li>
+                    <li>Spock/Junit/Mockito/Nunit/etc</li>
+                </ul>
+            </div>
+        </div>
+      </section>
+      <section id="languages">
+        <h3>Languages</h3>
+        <div class="grid-list">
+            <div>
+                <h4>English</h4>
+              Native speaker
+            </div>
+            <div>
+                <h4>Norwegian</h4>
+              Native speaker
+            </div>
+        </div>
+      </section>
+      <section id="interests">
+        <h3>Interests</h3>
+        <div class="grid-list">
+            <div>
+                <h4>Stuff I like in general</h4>
+                <ul class="tag-list">
+                    <li>Dungeon &amp; Dragons</li>
+                    <li>Headphones (Good audio)</li>
+                    <li>My dog</li>
+                    <li>Discworld</li>
+                    <li>Whiskey</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Shows I like</h4>
+                <ul class="tag-list">
+                    <li>Battlestar Galactica</li>
+                    <li>Firefly</li>
+                    <li>Red Dwarf</li>
+                    <li>Doctor Who</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Developer books I recommend</h4>
+                <ul class="tag-list">
+                    <li>Clean Series</li>
+                    <li>Pragmatic Programmer</li>
+                    <li>The Phoenix Project/The Unicorn Project</li>
+                    <li>The Art of Unit Testing</li>
+                    <li>The Software Craftsman</li>
+                    <li>Working effectively with legacy code</li>
+                </ul>
+            </div>
+        </div>
+      </section>
+  </body>
+</html>
