@@ -12,9 +12,10 @@ jobs:
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
-        uses: wei/curl@master
-        with:
-          args: secrets.RESUME_JSON_URL
+        run: |
+          curl -X GET "${{ secrets.RESUME_JSON_URL }}"
+        id: json
+
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
         
