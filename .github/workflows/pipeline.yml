@@ -1,10 +1,40 @@
 name: Pipeline build
 
 on:
-  push:
+#  push:
   workflow_dispatch:
+  schedule:
+    - cron: '* * * * *' # Run every minute
 
 jobs:
+  poll-for-changes:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Retrieve the JSON file from the remote endpoint
+      - name: Retrieve JSON file
+        uses: actions/toolkit/curl@v2.0.0
+        with:
+          url: ${{ secrets.RESUME_JSON_URL }}
+        id: json
+
+      # Step 2: Generate a checksum for the JSON file
+      - name: Generate checksum
+        run: echo "${{ checksum '${{ steps.json.outputs.body }}' }}"
+        id: checksum
+
+      # Step 3: Check if the checksum is in the cache
+      - name: Check cache
+        uses: actions/cache@v2.0.0
+        id: cache
+        with:
+          path: ${{ steps.checksum.output }}
+          key: json-checksum
+
+      # Step 4: If the checksum is not in the cache, continue executing the next jobs in the pipeline
+      - name: Continue executing pipeline
+        if: steps.cache.output == 'cache-miss'
+        continue-on-error: true
+
   # TESTS BEGIN
   python_tests:
     name: Run Python unit tests
