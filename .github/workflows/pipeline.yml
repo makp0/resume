@@ -16,9 +16,9 @@ jobs:
           curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
         id: json
         
-      - name: Retrieve JSON file
+      - name: test write
         run: |
-          curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
+          echo "70b130b1be36cd00ac782f048e43bd5fc123d0821a610a09e4e4dd4717b52051" >> $GITHUB_OUTPUT
         id: another
 
       - name: Generate checksum
