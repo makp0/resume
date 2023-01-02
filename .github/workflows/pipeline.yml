@@ -35,7 +35,7 @@ jobs:
       # Step 4: If the checksum is in the cache, exit the pipeline
       - name: Exit pipeline if no updates
         if: steps.cache.outputs.cache-hit == 'true'
-        run: exit 1
+        run: exit 0
 
   # TESTS BEGIN
   python_tests:
