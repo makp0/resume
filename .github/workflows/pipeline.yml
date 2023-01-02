@@ -21,7 +21,7 @@ jobs:
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
-        run: echo "::set-output name=output::$(echo "${{ steps.json.outputs.body }}" | sha256sum | cut -d' ' -f1)"
+        run: echo "${{ steps.json.outputs }}" | sha256sum | cut -d' ' -f1 >> $GITHUB_OUTPUT
         id: checksum
         
       - name: Generate checksum
@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v2.0.0
         id: cache
         with:
-          path: ${{ steps.checksum.output }}
+          path: ${{ steps.checksum.outputs }}
           key: json-checksum
       
       # Step 4: If the checksum is in the cache, exit the pipeline
