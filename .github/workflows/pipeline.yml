@@ -13,9 +13,7 @@ jobs:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
         run: |
-          curl -X GET "${{ secrets.RESUME_JSON_URL }}"
-        outputs:
-          json: ${{ steps.json.outputs.json }}
+          curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
         id: json
 
       - name: Generate checksum
