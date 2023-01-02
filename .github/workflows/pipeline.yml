@@ -22,7 +22,7 @@ jobs:
         id: checksum
         
       - name: Generate checksum
-        run: echo "${{ steps.checksum }}"
+        run: echo "${{ toJson(steps.checksum) }}"
         
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
