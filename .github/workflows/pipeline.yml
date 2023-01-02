@@ -16,6 +16,10 @@ jobs:
           curl -X GET "${{ secrets.RESUME_JSON_URL }}"
         id: json
 
+      - name: Generate checksum
+        run: echo "${{ toJson(steps.json) }}"
+        
+
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
         run: echo "$(echo "${{ steps.json.outputs.body }}" | sha256sum | cut -d' ' -f1)"
