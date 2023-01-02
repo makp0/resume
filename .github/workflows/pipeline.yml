@@ -21,7 +21,7 @@ jobs:
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
-        run: echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1 >> $GITHUB_OUTPUT
+        run: echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1
         id: checksum
         
       - name: Generate checksum
