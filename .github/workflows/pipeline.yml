@@ -21,9 +21,10 @@ jobs:
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
-        run: echo "${{ echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1 }}"
+        run: echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1 >> hash.txt
         id: checksum
-        
+      - name: Output hash
+        run: echo "hash is $(cat hash.txt)"
       - name: Generate checksum
         run: echo "${{ toJson(steps.checksum) }}"
         
