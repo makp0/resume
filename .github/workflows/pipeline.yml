@@ -16,22 +16,18 @@ jobs:
           curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
         id: json
         
-      - name: test write
-        run: |
-          echo "70b130b1be36cd00ac782f048e43bd5fc123d0821a610a09e4e4dd4717b52051" >> $GITHUB_OUTPUT
-        id: another
 
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
-        run: echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1 > checksum.txt
+        run: echo "output=${{ steps.json.outputs }}" | sha256sum | cut -d' ' -f1 >> $GITHUB_OUTPUT
         id: checksum
-      - name: print hash
-        run: echo "hash is $(cat checksum.txt)"
+   
       - name: Output hash
-        run: cat checksum.txt >> $GITHUB_OUTPUT
+        run: echo "${{ toJson(steps.checksum) }}"
+
         
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
