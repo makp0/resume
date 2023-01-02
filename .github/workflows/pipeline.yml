@@ -22,7 +22,7 @@ jobs:
         id: checksum
         
       - name: Generate checksum
-        run: print(workflow)
+        run: echo "${{ steps.checksum }}"
         
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
