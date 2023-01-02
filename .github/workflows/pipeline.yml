@@ -25,16 +25,12 @@ jobs:
         run: echo "result=$(echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1)" >> $GITHUB_OUTPUT
         id: checksum
    
-      - name: Output hash
-        run: echo "${{ toJson(steps.checksum) }}"
-
-        
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
         uses: actions/cache@v2.0.0
         id: cache
         with:
-          path: ${{ steps.checksum.outputs }}
+          path: ${{ steps.checksum.outputs.result }}
           key: json-checksum
       
       # Step 4: If the checksum is in the cache, exit the pipeline
