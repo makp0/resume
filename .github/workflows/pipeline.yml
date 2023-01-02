@@ -20,6 +20,12 @@ jobs:
       - name: Generate checksum
         run: echo "$(echo "${{ steps.json.outputs.body }}" | sha256sum | cut -d' ' -f1)"
         id: checksum
+        
+      - name: Generate checksum
+        run: echo 'Checksum "${{ steps.checksum.output }}"'
+        
+      - name: Generate checksum
+        run: echo 'Checksum "${{ steps.checksum }}"'
 
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
