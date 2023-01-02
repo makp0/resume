@@ -12,9 +12,8 @@ jobs:
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
-        uses: actions/toolkit/curl@v2.0.0
-        with:
-          url: ${{ secrets.RESUME_JSON_URL }}
+        run: |
+          curl -X GET "${{ secrets.RESUME_JSON_URL }}"
         id: json
 
       # Step 2: Generate a checksum for the JSON file
