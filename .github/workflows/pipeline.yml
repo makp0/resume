@@ -15,6 +15,11 @@ jobs:
         run: |
           curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
         id: json
+        
+      - name: Retrieve JSON file
+        run: |
+          curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
+        id: another
 
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
