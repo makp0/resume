@@ -10,14 +10,14 @@ on:
 
 jobs:
   load-input:
-    if: ${{ resume_json_cache_key != '' }}
+    if: ${{ inputs.resume_json_cache_key != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check cache
         uses: actions/cache@v3
         with:
           path: resume.json
-          key: ${{ resume_json_cache_key }}
+          key: ${{ inputs..resume_json_cache_key }}
       - name: Print cache hit
         if: steps.check-cache.outputs.cache-hit != 'true'
         run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
