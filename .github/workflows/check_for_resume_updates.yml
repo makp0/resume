@@ -37,7 +37,7 @@ jobs:
     needs: load-input
     steps:
       - name: Debug
-        run: echo "${{ toJson(needs) }}"
+        run: echo "${{ toJson(steps) }}"
     
 #  deploy_update:
 #    runs-on: ubuntu-latest
