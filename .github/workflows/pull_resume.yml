@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
       - name: Retrieve resume JSON file
         run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > fetched_resume.json
 

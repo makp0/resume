@@ -256,7 +256,10 @@ jobs:
 
   create_release:
     name: Bump version & create release
-    needs: [ html_conversions, script_conversions, markdown_conversions, pdf_conversions ]
+    needs: [ html_conversions, 
+#             script_conversions,
+             markdown_conversions,
+             pdf_conversions ]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     outputs:
