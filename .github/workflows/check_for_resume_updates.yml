@@ -9,18 +9,12 @@ on:
 jobs:
   load-input:
     outputs:
-      resume_json: ${{ steps.json.outputs.result }}
       cache_hit: ${{ steps.check_cache.outputs.cache-hit }}
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve resume JSON file
-        run: |
-          echo "result=$(curl -X GET ${{ secrets.RESUME_JSON_URL }})" >> $GITHUB_OUTPUT
-        id: json
-
-      - name: Generate checksum
-        run: echo "${{ toJson(steps.json) }}"
+        run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
 
       # Step 2: Generate a checksum for the JSON file
       - name: Generate checksum
@@ -32,7 +26,8 @@ jobs:
         uses: actions/cache@v3
         id: check_cache
         with:
-          key: ${{ steps.checksum.outputs.result }}
+          path: resume.json
+          key: ${{ hashFiles('resume.json') }}
           
   debug:
     runs-on: ubuntu-latest
@@ -46,5 +41,5 @@ jobs:
     if: needs.load-input.outputs.cache_hit == 'false'
     uses: ./.github/workflows/pipeline.yml
     with:
-      resume_json: ${{ toJson(needs.load-input.outputs.resume_json) }}
+      resume_json_cache_key: ${{ hashFiles('resume.json') }}
     secrets: inherit
