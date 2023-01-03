@@ -27,7 +27,7 @@ jobs:
           path: resume.json
           key: ${{ hashFiles('resume.json') }}
       - name: debug output check-cache
-        run: echo ${{ toJson(steps.check-cache.outputs) }}
+        run: echo ${{ steps.check-cache }}
       - name: set output
         run: |
           echo "cache-hit=${{ steps.check-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
