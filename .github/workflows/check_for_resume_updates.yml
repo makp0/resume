@@ -25,13 +25,13 @@ jobs:
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
         uses: actions/cache@v2.0.0
-        id: cache
+        id: check_cache
         with:
           path: ${{ steps.checksum.outputs.result }}
           key: json-checksum
   deploy_update:
     needs: load-input
-    if: steps.cache.outputs.cache-hit == 'false'
+    if: needs.check_cache.outputs.cache-hit == 'false'
     uses: ./.github/workflows/pipeline.yml
     with:
       resume_json: ${{ toJson(needs.json.outputs) }}
