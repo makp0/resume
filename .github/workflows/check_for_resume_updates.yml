@@ -10,6 +10,8 @@ jobs:
   load-input:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
         uses: ./.github/workflows/steps/fetch_resume.yml
