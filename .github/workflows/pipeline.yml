@@ -6,11 +6,7 @@ on:
   workflow_call:
     inputs:
       resume_json:
-        required: true
         type: string
-    secrets:
-      envPAT:
-        required: true
 
 jobs:
   load-input:
