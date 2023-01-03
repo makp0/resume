@@ -8,6 +8,8 @@ on:
 
 jobs:
   load-input:
+    outputs:
+      resume_json: ${{ steps.json.outputs }}
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
@@ -37,7 +39,7 @@ jobs:
     needs: load-input
     steps:
       - name: Debug
-        run: echo "${{ toJson(steps) }}"
+        run: echo "${{ toJson(needs) }}"
     
 #  deploy_update:
 #    runs-on: ubuntu-latest
