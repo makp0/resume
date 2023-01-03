@@ -15,7 +15,7 @@ jobs:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve resume JSON file
         run: |
-          echo "result=$(curl -X GET "${{ secrets.RESUME_JSON_URL }})" >> $GITHUB_OUTPUT
+          echo "result=$(curl -X GET ${{ secrets.RESUME_JSON_URL }})" >> $GITHUB_OUTPUT
         id: json
 
       - name: Generate checksum
