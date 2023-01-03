@@ -10,36 +10,17 @@ on:
 
 jobs:
   load-input:
+    if: ${{ resume_json_cache_key != '' }}
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
-      # Step 1: Retrieve the JSON file from the remote endpoint
-      - name: Retrieve resume JSON file
-        run: |
-          curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
-        id: json
-
-      - name: Generate checksum
-        run: echo "${{ toJson(steps.json) }}"
-
-      # Step 2: Generate a checksum for the JSON file
-      - name: Generate checksum
-        run: echo "result=$(echo "${{ toJson(steps.json.outputs) }}" | sha256sum | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-        id: checksum
-   
-      # Step 3: Check if the checksum is in the cache
       - name: Check cache
-        uses: actions/cache@v2.0.0
-        id: cache
+        uses: actions/cache@v3
         with:
-          path: ${{ steps.checksum.outputs.result }}
-          key: json-checksum
-      
-      # Step 4: If the checksum is in the cache, exit the pipeline
-      - name: Exit pipeline if no updates
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: 
-          cancel-workflow
+          path: resume.json
+          key: ${{ resume_json_cache_key }}
+      - name: Print cache hit
+        if: steps.check-cache.outputs.cache-hit != 'true'
+        run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
 
   # TESTS BEGIN
   python_tests:

@@ -13,40 +13,48 @@ jobs:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve resume JSON file
         run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
+#
+#      - name: Print JSON file
+#        run: echo $(cat resume.json)
 
       # Step 2: Generate a checksum for the JSON file
-      - name: Generate checksum
-        run: echo "result=$(echo "${{ toJson(steps.json.outputs.result) }}" | sha256sum | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+#      - name: Generate checksum
+#        run: echo "result=$(echo "${{ toJson(steps.json.outputs.result) }}" | sha256sum | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+#        id: checksum
+#      - name: print real path of resume.json
+#        run: echo $(realpath resume.json)
+      - name: Calculate checksum of resume.json
         id: checksum
-      
+        run: |
+          sha256sum resume.json
+          echo "result=$(sha256sum resume.json)" >> $GITHUB_OUTPUT
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
         uses: actions/cache@v3
         id: check-cache
         with:
           path: resume.json
-          key: ${{ hashFiles('resume.json') }}
-      - name: debug output check-cache
-        run: echo ${{ steps.check-cache }}
-      - name: set output
-        run: |
-          echo "cache-hit=${{ steps.check-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
-          echo "cache-key=${{ steps.check-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
-        id: output
-    outputs:
-      cache-key: ${{ steps.cache.outputs.cache-key }}
-      cache-hit: ${{ steps.cache.outputs.cache-hit }}
+          key: ${{ steps.checksum.outputs.result }}
           
-  debug:
-    runs-on: ubuntu-latest
-    needs: load-input
-    steps:
-      - name: Debug
-        run: echo "${{ toJson(needs) }}"
+#      - name: Print cache hit
+#        id: cache-h
+#        if: steps.check-cache.outputs.cache-hit == 'true'
+#        run: echo "cache-hit=true" >> $GITHUB_OUTPUT
+    outputs:
+      cache-key: ${{ steps.checksum.outputs.result }}
+      cache-hit: ${{ steps.check-cache.outputs.cache-hit }}
     
+#    
+#  debug:
+#    runs-on: ubuntu-latest
+#    needs: load-input
+#    steps:
+#      - name: Debug
+#        run: echo res ${{ needs.load-input.outputs.cache-hit }} res
+        
   deploy_update:
     needs: load-input
-    if: needs.load-input.outputs.cache-hit == 'false'
+    if: needs.load-input.outputs.cache-hit != 'true'
     uses: ./.github/workflows/pipeline.yml
     with:
       resume_json_cache_key: ${{ needs.load-input.outputs.cache-key }}
