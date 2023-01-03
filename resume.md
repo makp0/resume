@@ -2,7 +2,7 @@
 
 #### Tech lead | Developer
 
-###### john@jmgundersen.com - [https://jmgundersen.com](https://jmgundersen.com) - [atomfinger@GitHub](https://github.com/atomfinger/)
+###### me@polupan.dev - [https://github.com/mapolu](https://github.com/mapolu) - [mapolu@gitconnected](https://gitconnected.com/mapolu) - [mapolu@GitHub](https://github.com/mapolu)
 
 T e c h
 
@@ -62,7 +62,7 @@ s y s t e m s .
 
 ## Experience
 
-**Tech Lead**, [Protector](https://protectorforsikring.no/) (12.2020 - Current)
+**Tech Lead**, [Protector](https://protectorforsikring.no/) (12.2020 - 01.2023)
 
 Currently helping the company by improving development processes
 
@@ -123,14 +123,3 @@ English, Norwegian
 - Shows I like: Battlestar Galactica, Firefly, Red Dwarf, Doctor Who
 - Developer books I recommend: Clean Series, Pragmatic Programmer, The Phoenix Project/The Unicorn Project, The Art of
   Unit Testing, The Software Craftsman, Working effectively with legacy code
-
-## Projects
-
-**[toUUID (10.2020 - Current)](https://github.com/atomfinger/toUUID)**
-
-A small library that creates human-readable and deterministic UUIDs for testing purposes.
-
-**[This resume (08.2020 - Current)](https://github.com/atomfinger/resume)**
-
-This resume is more than just a resume. It is fully automated using Github Actions and scripted with Python. It has
-automated tests. It converts between a bunch of different formats and it auto-deploys to a production-like environment.
