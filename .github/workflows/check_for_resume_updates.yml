@@ -1,8 +1,8 @@
 name: Check for resume updates
 
 on:
-  push:
   workflow_dispatch:
+  workflow_call:
   schedule:
     - cron: '*/5 * * * *' # Run at every 5th minute
 
@@ -10,52 +10,30 @@ jobs:
   load-input:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Retrieve the JSON file from the remote endpoint
+      - uses: actions/checkout@v2
       - name: Retrieve resume JSON file
-        run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
+        run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > fetched_resume.json
 #
-#      - name: Print JSON file
-#        run: echo $(cat resume.json)
-
-      # Step 2: Generate a checksum for the JSON file
-#      - name: Generate checksum
-#        run: echo "result=$(echo "${{ toJson(steps.json.outputs.result) }}" | sha256sum | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-#        id: checksum
-#      - name: print real path of resume.json
-#        run: echo $(realpath resume.json)
-      - name: Calculate checksum of resume.json
-        id: checksum
+      - name: Compare existing and fetched resumes
         run: |
-          sha256sum resume.json
-          echo "result=$(sha256sum resume.json)" >> $GITHUB_OUTPUT
-      # Step 3: Check if the checksum is in the cache
-      - name: Check cache
-        uses: actions/cache@v3
-        id: check-cache
+          obj1=$(cat resume.json | jq -c '.')
+          obj2=$(cat fetched_resume.json | jq -c '.')
+          if [ "$obj1" = "$obj2" ]; then
+            echo "files-match=true" >> $GITHUB_ENV
+          else
+            echo "files-match=false" >> $GITHUB_ENV
+          fi
+
+      - name: Replace resume.json with fetched_resume.json
+        if: ${{ env.files-match == 'false' }}
+        run: |
+          mv fetched_resume.json resume.json
+
+      - name: Commit changes
+        if: ${{ env.files-match == 'false' }}
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
-          path: resume.json
-          key: ${{ steps.checksum.outputs.result }}
-          
-#      - name: Print cache hit
-#        id: cache-h
-#        if: steps.check-cache.outputs.cache-hit == 'true'
-#        run: echo "cache-hit=true" >> $GITHUB_OUTPUT
-    outputs:
-      cache-key: ${{ steps.checksum.outputs.result }}
-      cache-hit: ${{ steps.check-cache.outputs.cache-hit }}
-    
-#    
-#  debug:
-#    runs-on: ubuntu-latest
-#    needs: load-input
-#    steps:
-#      - name: Debug
-#        run: echo res ${{ needs.load-input.outputs.cache-hit }} res
-        
-  deploy_update:
-    needs: load-input
-    if: needs.load-input.outputs.cache-hit != 'true'
-    uses: ./.github/workflows/pipeline.yml
-    with:
-      resume_json_cache_key: ${{ needs.load-input.outputs.cache-key }}
-    secrets: inherit
+          commit_message: Update resume.json
+          commit_options: '--no-verify'
+          file_pattern: resume.json
+          push: true

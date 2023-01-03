@@ -1,27 +1,14 @@
 name: Pipeline build
 
 on:
-#  push:
+  push:
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      resume_json_cache_key:
-        type: string
 
 jobs:
-  load-input:
-    if: ${{ inputs.resume_json_cache_key != '' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check cache
-        id: check-cache
-        uses: actions/cache@v3
-        with:
-          path: resume.json
-          key: ${{ inputs.resume_json_cache_key }}
-      - name: Print cache hit
-        if: steps.check-cache.outputs.cache-hit != 'true'
-        run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
+  
+  check_for_resume_updates:
+    uses: ./.github/workflows/check_for_resume_updates.yml
+    secrets: inherit
 
   # TESTS BEGIN
   python_tests:
