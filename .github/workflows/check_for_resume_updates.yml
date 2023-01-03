@@ -29,7 +29,7 @@ jobs:
       
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
-        uses: actions/cache@v2.0.0
+        uses: actions/cache@v3
         id: check_cache
         with:
           path: ${{ steps.checksum.outputs.result }}
