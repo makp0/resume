@@ -22,10 +22,17 @@ jobs:
       # Step 3: Check if the checksum is in the cache
       - name: Check cache
         uses: actions/cache@v3
-        id: check_cache
+        id: check-cache
         with:
           path: resume.json
           key: ${{ hashFiles('resume.json') }}
+      - name: debug output check-cache
+        run: echo ${{ toJson(steps.check-cache) }}
+      - name: set output
+        run: |
+          echo "cache-hit=${{ steps.check-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
+          echo "cache-key=${{ steps.check-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
+        id: output
     outputs:
       cache-key: ${{ steps.cache.outputs.cache-key }}
       cache-hit: ${{ steps.cache.outputs.cache-hit }}
