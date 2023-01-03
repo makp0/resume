@@ -182,6 +182,8 @@ a p p r o a c h e s .
 
 **Senior Software Engineer**, [GlobalLogic](https://www.linkedin.com/company/164008) (12.2021 - 01.2023)
 
+Currently helping the company by improving development processes
+
 **Tech Lead**, [Protector](https://protectorforsikring.no/) (12.2020 - 01.2023)
 
 Currently helping the company by improving development processes
