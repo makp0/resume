@@ -11,7 +11,7 @@ jobs:
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
-        uses: ./.github/workflows/common/fetch_resume.yml
+        uses: ./.github/workflows/steps/fetch_resume.yml
 
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
@@ -29,8 +29,9 @@ jobs:
           path: ${{ steps.checksum.outputs.result }}
           key: json-checksum
       
-      # Step 4: If the checksum is in the cache, exit the pipeline
-      - name: Exit pipeline if no updates
-        if: steps.cache.outputs.cache-hit == 'true'
-        run:
-          cancel-workflow
+      - name: Run pipeline if update available
+        if: steps.cache.outputs.cache-hit == 'false'
+        uses: ./.github/workflows/pipeline.yml
+        with:
+          resume_json: ${{ toJson(steps.json.outputs) }}
+        secrets: inherit

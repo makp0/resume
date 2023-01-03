@@ -1,10 +1,16 @@
 name: Pipeline build
 
 on:
-  push:
+#  push:
   workflow_dispatch:
-  schedule:
-    - cron: '*/5 * * * *' # Run at every 5th minute
+  workflow_call:
+    inputs:
+      resume_json:
+        required: true
+        type: string
+    secrets:
+      envPAT:
+        required: true
 
 jobs:
   load-input:
@@ -13,9 +19,7 @@ jobs:
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
-        run: |
-          curl -X GET "${{ secrets.RESUME_JSON_URL }}" >> $GITHUB_OUTPUT
-        id: json
+        uses: ./.github/workflows/steps/fetch_resume.yml
 
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
