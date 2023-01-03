@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pull-resume:
+  pull_resume:
     uses: ./.github/workflows/pull_resume.yml
     secrets: inherit
 
@@ -31,7 +31,7 @@ jobs:
   verify_spelling:
     name: Check spelling
     continue-on-error: true
-    needs: load-input
+    needs: pull_resume
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -52,7 +52,7 @@ jobs:
 
   validate_schema:
     name: Validate JSON resume schema
-    needs: load-input
+    needs: pull_resume
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -67,7 +67,7 @@ jobs:
 
   verify_urls:
     name: Verify URLs in resume
-    needs: load-input
+    needs: pull_resume
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
