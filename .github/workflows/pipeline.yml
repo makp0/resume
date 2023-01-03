@@ -35,7 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -57,7 +58,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -73,7 +75,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -101,7 +104,8 @@ jobs:
     needs: [ python_tests, verify_spelling, validate_schema, verify_urls ]
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -153,7 +157,8 @@ jobs:
     needs: [ python_tests, verify_spelling, validate_schema, verify_urls ]
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
         with:
@@ -181,7 +186,8 @@ jobs:
     needs: [ python_tests, verify_spelling, validate_schema, verify_urls ]
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -216,7 +222,8 @@ jobs:
     needs: [ python_tests, verify_spelling, validate_schema, verify_urls ]
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
+        with:
+          ref: ${{ github.ref }}
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -256,9 +263,9 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - uses: actions/checkout@v2
-        ref: ${{ github.ref }}
         with:
           fetch-depth: '0'
+          ref: ${{ github.ref }}
       - name: Bump version and push tag
         id: version_bump
         uses: anothrNick/github-tag-action@1.36.0
