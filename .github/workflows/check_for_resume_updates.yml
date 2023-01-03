@@ -30,8 +30,9 @@ jobs:
           path: ${{ steps.checksum.outputs.result }}
           key: json-checksum
   deploy_update:
+    needs: load-input
     if: steps.cache.outputs.cache-hit == 'false'
     uses: ./.github/workflows/pipeline.yml
     with:
-      resume_json: ${{ toJson(steps.json.outputs) }}
+      resume_json: ${{ toJson(needs.json.outputs) }}
     secrets: inherit
