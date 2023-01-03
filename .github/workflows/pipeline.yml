@@ -5,8 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  
-  load-input:
+  pull-resume:
     uses: ./.github/workflows/check_for_resume_updates.yml
     secrets: inherit
 

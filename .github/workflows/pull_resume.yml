@@ -7,18 +7,19 @@ on:
     - cron: '*/5 * * * *' # Run at every 5th minute
 
 jobs:
-  load-input:
+  pull_resume:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Retrieve resume JSON file
         run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > fetched_resume.json
-#
+
       - name: Compare existing and fetched resumes
         run: |
-          obj1=$(cat resume.json | jq -c '.')
-          obj2=$(cat fetched_resume.json | jq -c '.')
-          if [ "$obj1" = "$obj2" ]; then
+          original=$(cat resume.json | jq -c '.')
+          fetched=$(cat fetched_resume.json | jq -c '.')
+
+          if [ "$original" = "$fetched" ]; then
             echo "files-match=true" >> $GITHUB_ENV
           else
             echo "files-match=false" >> $GITHUB_ENV
