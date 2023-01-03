@@ -33,6 +33,7 @@ jobs:
           key: json-checksum
           
   debug:
+    runs-on: ubuntu-latest
     needs: load-input
     steps:
       - name: Debug
