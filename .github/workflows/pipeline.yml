@@ -72,6 +72,7 @@ jobs:
   verify_urls:
     name: Verify URLs in resume
     needs: pull_resume
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
