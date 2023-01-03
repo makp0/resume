@@ -1,4 +1,4 @@
-name: Pipeline build
+name: Check for resume updates
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
   load-input:
     outputs:
       resume_json: ${{ steps.json.outputs.result }}
-      cache_hit: ${{ needs.check_cache.outputs.cache-hit }}
+      cache_hit: ${{ steps.check_cache.outputs.cache-hit }}
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
