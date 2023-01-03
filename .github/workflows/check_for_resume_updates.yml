@@ -1,6 +1,7 @@
 name: Pipeline build
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '*/5 * * * *' # Run at every 5th minute
