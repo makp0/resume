@@ -10,6 +10,7 @@ jobs:
   load-input:
     outputs:
       resume_json: ${{ steps.json.outputs.result }}
+      cache_hit: ${{ needs.check_cache.outputs.cache-hit }}
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
@@ -41,11 +42,11 @@ jobs:
       - name: Debug
         run: echo "${{ toJson(needs) }}"
     
-#  deploy_update:
-#    runs-on: ubuntu-latest
-#    needs: load-input
-#    if: needs.check_cache.outputs.cache-hit == 'false'
-#    uses: ./.github/workflows/pipeline.yml
-#    with:
-#      resume_json: ${{ toJson(needs.json.outputs) }}
-#    secrets: inherit
+  deploy_update:
+    runs-on: ubuntu-latest
+    needs: load-input
+    if: needs.load-input.outputs.cache_hit == 'false'
+    uses: ./.github/workflows/pipeline.yml
+    with:
+      resume_json: ${{ toJson(needs.load-input.outputs.resume_json) }}
+    secrets: inherit
