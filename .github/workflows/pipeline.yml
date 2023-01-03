@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: resume.json
-          key: ${{ inputs..resume_json_cache_key }}
+          key: ${{ inputs.resume_json_cache_key }}
       - name: Print cache hit
         if: steps.check-cache.outputs.cache-hit != 'true'
         run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > resume.json
