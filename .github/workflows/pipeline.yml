@@ -6,7 +6,7 @@ on:
 
 jobs:
   
-  check_for_resume_updates:
+  load-input:
     uses: ./.github/workflows/check_for_resume_updates.yml
     secrets: inherit
 
