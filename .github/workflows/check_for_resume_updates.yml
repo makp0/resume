@@ -8,8 +8,6 @@ on:
 
 jobs:
   load-input:
-    outputs:
-      cache_hit: ${{ steps.check_cache.outputs.cache-hit }}
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
@@ -28,6 +26,9 @@ jobs:
         with:
           path: resume.json
           key: ${{ hashFiles('resume.json') }}
+    outputs:
+      cache-key: ${{ steps.cache.outputs.cache-key }}
+      cache-hit: ${{ steps.cache.outputs.cache-hit }}
           
   debug:
     runs-on: ubuntu-latest
@@ -38,8 +39,8 @@ jobs:
     
   deploy_update:
     needs: load-input
-    if: needs.load-input.outputs.cache_hit == 'false'
+    if: needs.load-input.outputs.cache-hit == 'false'
     uses: ./.github/workflows/pipeline.yml
     with:
-      resume_json_cache_key: ${{ hashFiles('resume.json') }}
+      resume_json_cache_key: ${{ needs.load-input.outputs.cache-key }}
     secrets: inherit
