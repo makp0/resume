@@ -6,7 +6,7 @@ on:
 
 jobs:
   pull-resume:
-    uses: ./.github/workflows/check_for_resume_updates.yml
+    uses: ./.github/workflows/pull_resume.yml
     secrets: inherit
 
   # TESTS BEGIN
