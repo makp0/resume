@@ -29,10 +29,9 @@ jobs:
         with:
           path: ${{ steps.checksum.outputs.result }}
           key: json-checksum
-      
-      - name: Run pipeline if update available
-        if: steps.cache.outputs.cache-hit == 'false'
-        uses: ./.github/workflows/pipeline.yml
-        with:
-          resume_json: ${{ toJson(steps.json.outputs) }}
-        secrets: inherit
+  deploy_update:
+    if: steps.cache.outputs.cache-hit == 'false'
+    uses: ./.github/workflows/pipeline.yml
+    with:
+      resume_json: ${{ toJson(steps.json.outputs) }}
+    secrets: inherit
