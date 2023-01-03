@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   workflow_call:
     inputs:
-      resume_json:
+      resume_json_cache_key:
         type: string
 
 jobs:
