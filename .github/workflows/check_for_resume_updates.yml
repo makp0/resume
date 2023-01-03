@@ -32,8 +32,7 @@ jobs:
         uses: actions/cache@v3
         id: check_cache
         with:
-          path: ${{ steps.checksum.outputs.result }}
-          key: json-checksum
+          key: ${{ steps.checksum.outputs.result }}
           
   debug:
     runs-on: ubuntu-latest
