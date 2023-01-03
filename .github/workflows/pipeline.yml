@@ -13,7 +13,6 @@ jobs:
   # TESTS BEGIN
   python_tests:
     name: Run Python unit tests
-    needs: load-input
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
