@@ -1,0 +1,42 @@
+name: Check for resume updates
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  schedule:
+    - cron: '*/5 * * * *' # Run at every 5th minute
+
+jobs:
+  pull_resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Retrieve resume JSON file
+        run: curl -X GET ${{ secrets.RESUME_JSON_URL }} > fetched_resume.json
+
+      - name: Compare existing and fetched resumes
+        run: |
+          original=$(cat resume.json | jq -c '.')
+          fetched=$(cat fetched_resume.json | jq -c '.')
+
+          if [ "$original" = "$fetched" ]; then
+            echo "files-match=true" >> $GITHUB_ENV
+          else
+            echo "files-match=false" >> $GITHUB_ENV
+          fi
+
+      - name: Replace resume.json with fetched_resume.json
+        if: ${{ env.files-match == 'false' }}
+        run: |
+          mv fetched_resume.json resume.json
+
+      - name: Commit changes
+        if: ${{ env.files-match == 'false' }}
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with:
+          commit_message: Update resume.json
+          commit_options: '--no-verify'
+          file_pattern: resume.json
+          push: true
