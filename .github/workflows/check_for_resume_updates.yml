@@ -9,7 +9,7 @@ on:
 jobs:
   load-input:
     outputs:
-      resume_json: ${{ steps.json.outputs }}
+      resume_json: ${{ steps.json.outputs.result }}
     runs-on: ubuntu-latest
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
