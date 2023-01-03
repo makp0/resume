@@ -11,7 +11,7 @@ jobs:
     steps:
       # Step 1: Retrieve the JSON file from the remote endpoint
       - name: Retrieve JSON file
-        include: ./.github/workflows/common/fetch_resume.yml
+        uses: ./.github/workflows/common/fetch_resume.yml
 
       - name: Generate checksum
         run: echo "${{ toJson(steps.json) }}"
