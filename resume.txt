@@ -1,29 +1,77 @@
-John Mikael Gundersen
-=====================
+Maksym Polupan
+==============
 
-#### Tech lead \| Developer
+#### Software Engineer
 
-###### me\@polupan.dev - <https://github.com/mapolu> - [mapolu\@gitconnected](https://gitconnected.com/mapolu) - [mapolu\@GitHub](https://github.com/mapolu)
+###### me\@polupan.dev - <https://github.com/mapolu> - [mapolu\@gitconnected](https://gitconnected.com/mapolu) - [mapolu\@GitHub](https://github.com/mapolu) - [mapolu\@LinkedIn](https://www.linkedin.com/in/mapolu/)
 
-T e c h
+I
 
-l e a d
+l o v e
 
-w i t h
-
-a
-
-f o u c s
-
-o n
-
-q u a l i t y
+C
 
 a n d
 
-b e s t
+u s e
 
-p r a c t i c e s .
+t h e
+
+l a t e s t
+
+a n d
+
+g r e a t e s t
+
+A S P . N E T
+
+C o r e
+
+f r a m e w o r k
+
+t o
+
+b u i l d
+
+a p p l i c a t i o n s
+
+t h a t
+
+r u n
+
+i n
+
+A z u r e
+
+o r
+
+D o c k e r .
+
+I n
+
+a d d i t i o n ,
+
+I
+
+h a v e
+
+a l s o
+
+g a i n e d
+
+p r o f i c i e n c y
+
+i n
+
+S o l i d i t y
+
+a n d
+
+R e a c t
+
+w i t h
+
+T y p e s c r i p t .
 
 H a s
 
@@ -49,21 +97,92 @@ s e n s i t i v e
 
 h e a l t h c a r e
 
-a p p l i c a t i o n s
+a p p l i c a t i o n s ,
+
+I O T
+
+d e v i c e
+
+m a n a g e m e n t
+
+s y s t e m s ,
+
+w i r e l e s s
+
+c o m m u n i c a t i o n
+
+t e c h n o l o g i e s ,
+
+q u a n t i t a t i v e
+
+f i n a n c e ,
 
 a n d
 
-l a r g e
----------
+a d v a n c e d
 
-s c a l e
-
-b a n k i n g
+b a c k u p
 
 s y s t e m s .
 
+O u t s i d e
+
+o f
+
+w o r k ,
+
+I
+
+e n j o y
+
+c r e a t i n g
+
+a p p l i e d
+
+t e c h n o l o g y
+
+a n d
+
+D I Y
+
+p r o j e c t s .
+
+D i s c o v e r i n g
+
+t h e
+
+w a y s
+
+t o
+
+b u i l d
+
+r o b u s t
+
+a n d
+
+s c a l a b l e
+
+a p p l i c a t i o n
+
+u s i n g
+
+s t a t e
+
+o f
+
+t h e
+
+a r t
+
+a p p r o a c h e s .
+
 Experience
 ----------
+
+**Senior Software Engineer**,
+[GlobalLogic](https://www.linkedin.com/company/164008) (12.2021 -
+01.2023)
 
 **Tech Lead**, [Protector](https://protectorforsikring.no/) (12.2020 -
 01.2023)
@@ -83,6 +202,11 @@ Currently helping the company by improving development processes
 -   Authored developer guidelines. Created the first pipeline
     implementation for GitHub workflow
 -   Been part of most major technology decisions taken since I started
+
+**Personal Project Development**, [Self-employed]() (06.2021 - 02.2022)
+
+**.NET Developer**, [Polytech
+Software](https://www.linkedin.com/company/15869830) (12.2017 - 07.2021)
 
 **Senior Consultant**, [TietoEvry](https://www.tietoevry.com/) (05.2018
 - 11.2020)
@@ -115,29 +239,31 @@ eventually got promoted to the position of a team lead.
 Education
 ---------
 
-**Bachelor of science, Computer Science**, [Aberystwyth
-University](https://www.aber.ac.uk/en/) (08.2010 - 05.2014)
+**Marketing/Marketing Management, General, Master's degree**, [Institute
+of Ecology, Economics and Law]() (09.2018 - 01.2020)
 
--   CS38010 - Space Robotics
--   CS36410 - Intelligent Robotics
--   CS38110 - Open Source Development Issues
--   CS31310 - Agile Methodologies
+**Bachelor's degree, Computer Science**, [National Technical University
+of Ukraine 'Kyiv Polytechnic Institute'​]() (12.2014 - 12.2018)
 
 Skills
 ------
 
--   **Developer:** Java/Kotlin, C\# .NET, Python, Elixir, SQL of various
-    kinds, Microservices, Kafka, Architecture, Contract first, gRPC
--   **DevOps:** TeamCity, Jenkins, GitHub Actions, Groovy, Docker, K8s,
-    Swarm, Solution design
--   **Testing:** Testcontainers, System tests, Mockserver, Contract
-    testing, Narrow & Wide integration tests,
-    Spock/Junit/Mockito/Nunit/etc
+-   **DevOps:** GitHub Actions, Docker, Solution design, Traefik, Gitlab
+    CI, Azure DevOps
+-   **Testing:** System tests, Contract testing, Narrow & Wide
+    integration tests, nUnit, Mockserver, Fake Data
+-   **Protocols:** Bluetooth, Zigbee, WiFi
+-   **Tools:** Swagger, Rider, Visual Studio Code, Visual Studio,
+    Prometheus, Grafana, Postman, Jira, Home Assistant, ELK, ESPHome,
+    Miro, Figma
+-   **Development:** C\# .NET, Python, Microservices, Architecture,
+    gRPC, Contract first, Postgres, Azure, Typescript, React, Webpack,
+    Swagger, Git, Solidity, Ethereum, ASP.NET Core, .NET Core
 
 Languages
 ---------
 
-English, Norwegian
+Ukrainian, English, Italian, German, Russian
 
 Interests
 ---------
