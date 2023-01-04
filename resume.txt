@@ -203,12 +203,12 @@ Took a sabbatical to try new things and blow the dust from
 long-forgotten projects.
 
 -   Contributed to open-source home automation framework. Been part of a
-    major release.
+    major release
 -   Developed a sophisticated personal organizer system using Notion. I
-    know almost everything about Notion know.
+    know almost everything about Notion
 -   Developed smart home system using Home Assitant and .NET Deamon.
     Turned almost every device in my apartment into a smart one using
-    ESPHome. Brought all cloud devices to a local network.
+    ESPHome. Brought all cloud devices to a local network
 -   Started to develop an algorithmic trading bot
 
 **Senior Software Engineer**, [Polytech
@@ -226,7 +226,7 @@ systems, and medical applications
 -   Solo-developed and carried to production a mobile advisor
     application for medical doctors with no prior knowledge of mobile
     development. Took an extra step to make UI build from an external
-    XML file to reduce deploys.
+    XML file to reduce deploys
 
 Education
 ---------

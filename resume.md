@@ -198,10 +198,10 @@ Currently helping the company by improving development processes.
 
 Took a sabbatical to try new things and blow the dust from long-forgotten projects.
 
-- Contributed to open-source home automation framework. Been part of a major release.
-- Developed a sophisticated personal organizer system using Notion. I know almost everything about Notion know.
+- Contributed to open-source home automation framework. Been part of a major release
+- Developed a sophisticated personal organizer system using Notion. I know almost everything about Notion
 - Developed smart home system using Home Assitant and .NET Deamon. Turned almost every device in my apartment into a
-  smart one using ESPHome. Brought all cloud devices to a local network.
+  smart one using ESPHome. Brought all cloud devices to a local network
 - Started to develop an algorithmic trading bot
 
 **Senior Software Engineer**, [Polytech Software](https://www.linkedin.com/company/15869830) (12.2017 - 07.2021)
@@ -212,7 +212,7 @@ Maintained and developed solutions for IoT management, data recovery systems, an
 - As a CRO conducted research of new features and pitched them to the team
 - Transitioned a 15-year-old project with over 100+ employees to .NET Core and Entity Framework Core
 - Solo-developed and carried to production a mobile advisor application for medical doctors with no prior knowledge of
-  mobile development. Took an extra step to make UI build from an external XML file to reduce deploys.
+  mobile development. Took an extra step to make UI build from an external XML file to reduce deploys
 
 ## Education
 
