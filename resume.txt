@@ -184,62 +184,49 @@ Experience
 [GlobalLogic](https://www.linkedin.com/company/164008) (12.2021 -
 01.2023)
 
-Currently helping the company by improving development processes
+Currently helping the company by improving development processes.
 
 -   Built a testing framework that hid the complexity of a system to
     allow QA engineers to write tests more effectively and expressively
+-   Improved hardware sensor emulator code to achieve 20x faster
+    throughput speeds
+-   Developed a hardware setup that would simulate a behavior of a real
+    sensor and a library that can be used to control it
+-   Been part of most major technology decisions taken
+-   Authored developer guidelines
+-   Worked with other teams to integrate out solution with their systems
+-   Worked closely with partners in US and Europe
 
-**Tech Lead**, [Protector](https://protectorforsikring.no/) (12.2020 -
-01.2023)
+**Personal Project Development**, [Self-employed]() (06.2021 - 12.2021)
 
-Currently helping the company by improving development processes
+Took a sabbatical to try new things and blow the dust from
+long-forgotten projects.
 
--   Built the initialiser which serves as the golden standard within the
-    organisation while also being the fundation of any new application
--   Created the system that allows for efficient risk analysis for our
-    reinsurance which can potentially save the business millions in
-    years to come
--   Headed a project which aimed at geolocating risks in the UK where we
-    ended up geolocating +90% of the UK portfolio
--   Headed the adoption of various technologies and practices: OpenAPI,
-    Unit, system and integration testing, Static analysis tools such as
-    SonarCloud, Created the post-mortem process
--   Authored developer guidelines. Created the first pipeline
-    implementation for GitHub workflow
--   Been part of most major technology decisions taken since I started
+-   Contributed to open-source home automation framework. Been part of a
+    major release.
+-   Developed a sophisticated personal organizer system using Notion. I
+    know almost everything about Notion know.
+-   Developed smart home system using Home Assitant and .NET Deamon.
+    Turned almost every device in my apartment into a smart one using
+    ESPHome. Brought all cloud devices to a local network.
+-   Started to develop an algorithmic trading bot
 
-**Personal Project Development**, [Self-employed]() (06.2021 - 02.2022)
-
-**.NET Developer**, [Polytech
+**Senior Software Engineer**, [Polytech
 Software](https://www.linkedin.com/company/15869830) (12.2017 - 07.2021)
 
-**Senior Consultant**, [TietoEvry](https://www.tietoevry.com/) (05.2018
-- 11.2020)
+Maintained and developed solutions for IoT management, data recovery
+systems, and medical applications
 
-Maintained and created core solutions for major nordic banks.
-
--   Made and maintained core web systems for multiple banks
--   Created new systems for integration testing and improved CI/CD
-    pipelines
--   Authored developer guidelines for a cleaner and more maintainable
-    codebase
--   Was a team lead managing the team responsible for our PCI compliant
-    systems
--   Was a project architect that guided new banks, while being
-    responsible for the technical aspect of the project
--   Worked closely with partners in India
-
-**Senior system developer**, [Aspit](https://www.aspit.no/) (09.2013 -
-05.2018)
-
-Made electronic health record systems for the privatized healthcare
-sector in Norway. Started as a system developer for the first 3 years,
-eventually got promoted to the position of a team lead.
-
--   Was responsible for the development of the core product
--   Worked closely with the business by planning and implementing new
-    features
--   Worked closely with an outsourcing team in Vietnam
+-   Implemented new functionality and maintained microservice
+    architecture for IoT device management
+-   As a CRO conducted research of new features and pitched them to the
+    team
+-   Transitioned a 15-year-old project with over 100+ employees to .NET
+    Core and Entity Framework Core
+-   Solo-developed and carried to production a mobile advisor
+    application for medical doctors with no prior knowledge of mobile
+    development. Took an extra step to make UI build from an external
+    XML file to reduce deploys.
 
 Education
 ---------
@@ -264,7 +251,7 @@ Skills
 -   **Protocols:** Bluetooth, Zigbee, WiFi
 -   **Tools:** Swagger, Rider, Visual Studio Code, Visual Studio,
     Prometheus, Grafana, Postman, Jira, Home Assistant, ELK, ESPHome,
-    Miro, Figma
+    Miro, Figma, Notion
 
 Languages
 ---------
@@ -274,9 +261,4 @@ Ukrainian, English, Italian, German, Russian
 Interests
 ---------
 
--   Stuff I like in general: Dungeon & Dragons, Headphones (Good audio),
-    My dog, Discworld, Whiskey
--   Shows I like: Battlestar Galactica, Firefly, Red Dwarf, Doctor Who
--   Developer books I recommend: Clean Series, Pragmatic Programmer, The
-    Phoenix Project/The Unicorn Project, The Art of Unit Testing, The
-    Software Craftsman, Working effectively with legacy code
+-   Developer books I recommend: Clean Series, Red and Blue books on DDD
