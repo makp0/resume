@@ -227,6 +227,7 @@ systems, and medical applications
     application for medical doctors with no prior knowledge of mobile
     development. Took an extra step to make UI build from an external
     XML file to reduce deploys
+-   Conducted interviews as a technical specialist
 
 Education
 ---------

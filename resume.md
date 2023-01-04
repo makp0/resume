@@ -213,6 +213,7 @@ Maintained and developed solutions for IoT management, data recovery systems, an
 - Transitioned a 15-year-old project with over 100+ employees to .NET Core and Entity Framework Core
 - Solo-developed and carried to production a mobile advisor application for medical doctors with no prior knowledge of
   mobile development. Took an extra step to make UI build from an external XML file to reduce deploys
+- Conducted interviews as a technical specialist
 
 ## Education
 
