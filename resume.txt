@@ -186,6 +186,9 @@ Experience
 
 Currently helping the company by improving development processes
 
+-   Built a testing framework that hid the complexity of a system to
+    allow QA engineers to write tests more effectively and expressively
+
 **Tech Lead**, [Protector](https://protectorforsikring.no/) (12.2020 -
 01.2023)
 
@@ -250,17 +253,18 @@ of Ukraine 'Kyiv Polytechnic Institute'​]() (12.2014 - 12.2018)
 Skills
 ------
 
--   **DevOps:** GitHub Actions, Docker, Solution design, Traefik, Gitlab
-    CI, Azure DevOps
+-   **Development:** C\# .NET, Python, Microservices, Architecture,
+    gRPC, Contract first, Postgres, Azure, Typescript, React, Webpack,
+    Swagger, Git, Solidity, Ethereum, ASP.NET Core, .NET Core, TDD, DDD,
+    SOLID, YAGNI, DRY, KISS, LoD, SoC
 -   **Testing:** System tests, Contract testing, Narrow & Wide
     integration tests, nUnit, Mockserver, Fake Data
+-   **DevOps:** GitHub Actions, Docker, Solution design, Traefik, Gitlab
+    CI, Azure DevOps
 -   **Protocols:** Bluetooth, Zigbee, WiFi
 -   **Tools:** Swagger, Rider, Visual Studio Code, Visual Studio,
     Prometheus, Grafana, Postman, Jira, Home Assistant, ELK, ESPHome,
     Miro, Figma
--   **Development:** C\# .NET, Python, Microservices, Architecture,
-    gRPC, Contract first, Postgres, Azure, Typescript, React, Webpack,
-    Swagger, Git, Solidity, Ethereum, ASP.NET Core, .NET Core
 
 Languages
 ---------
